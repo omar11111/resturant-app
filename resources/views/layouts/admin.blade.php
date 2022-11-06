@@ -1,57 +1,411 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+<html dir="rtl"
+  lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+<head>
+    @include('admin.head')
+</head>
 
-        <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
-
-        <!-- Scripts -->
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    </head>
-    <body class="font-sans gray">
-
-
-            <main>
-                <div class="flex-col w-full md:flex md:flex-row md:min-h-screen">
-                    <div @click.away="open = false" class="flex flex-col flex-shrink-0 w-full text-gray-700 bg-white md:w-64 dark:text-gray-200 dark:bg-gray-800" x-data="{ open: false }">
-                        <div class="flex flex-row items-center justify-between flex-shrink-0 px-8 py-4">
-                            <a href="#" class="text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg dark:text-white focus:outline-none focus:shadow-outline">Flowtrail UI</a>
-                            <button class="rounded-lg md:hidden focus:outline-none focus:shadow-outline" @click="open = !open">
-                                <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
-                                    <path x-show="!open" fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z" clip-rule="evenodd"></path>
-                                    <path x-show="open" fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+<body class="font-sans antialiased">
+    <div class="page">
+        <aside class="navbar navbar-vertical navbar-expand-lg navbar-dark">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <h1 class="navbar-brand navbar-brand-autodark">
+                    <a href=".">
+                        <img src="./static/logo-white.svg" width="110" height="32" alt="Tabler"
+                            class="navbar-brand-image">
+                    </a>
+                </h1>
+                <div class="navbar-nav flex-row d-lg-none">
+                    <div class="nav-item d-none d-md-flex me-3">
+                        <div class="btn-list">
+                            <a href="https://github.com/tabler/tabler" class="btn" target="_blank" rel="noreferrer">
+                                <!-- Download SVG icon from http://tabler-icons.io/i/brand-github -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path
+                                        d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
                                 </svg>
-                            </button>
+                                Source code
+                            </a>
+                            <a href="https://github.com/sponsors/codecalm" class="btn" target="_blank"
+                                rel="noreferrer">
+                                <!-- Download SVG icon from http://tabler-icons.io/i/heart -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon text-pink" width="24"
+                                    height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path
+                                        d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+                                </svg>
+                                Sponsor
+                            </a>
                         </div>
-                            <nav :class="{'block': open, 'hidden': !open}" class="flex-grow px-4 pb-4 md:block md:pb-0 md:overflow-y-auto">
-                                <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-gray-200 rounded-lg dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">Blog</a>
-                                <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg dark:bg-transparent dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">Portfolio</a>
-                                <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg dark:bg-transparent dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">About</a>
-                                <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg dark:bg-transparent dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">Contact</a>
-                                <div @click.away="open = false" class="relative" x-data="{ open: false }">
-                                    <button @click="open = !open" class="flex flex-row items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left bg-transparent rounded-lg dark:bg-transparent dark:focus:text-white dark:hover:text-white dark:focus:bg-gray-600 dark:hover:bg-gray-600 md:block hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
-                                        <span>Dropdown</span>
-                                        <svg fill="currentColor" viewBox="0 0 20 20" :class="{'rotate-180': open, 'rotate-0': !open}" class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                                    </button>
-                                    <div x-show="open" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="absolute right-0 w-full mt-2 origin-top-right rounded-md shadow-lg">
-                                        <div class="px-2 py-2 bg-white rounded-md shadow dark:bg-gray-700">
-                                            <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark:bg-transparent dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">Link #1</a>
-                                            <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark:bg-transparent dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">Link #2</a>
-                                            <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark:bg-transparent dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">Link #3</a>
+                    </div>
+                    <a href="?theme=dark" class="nav-link px-0 hide-theme-dark" title="Enable dark mode"
+                        data-bs-toggle="tooltip" data-bs-placement="bottom">
+                        <!-- Download SVG icon from http://tabler-icons.io/i/moon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+                        </svg>
+                    </a>
+                    <a href="?theme=light" class="nav-link px-0 hide-theme-light" title="Enable light mode"
+                        data-bs-toggle="tooltip" data-bs-placement="bottom">
+                        <!-- Download SVG icon from http://tabler-icons.io/i/sun -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <circle cx="12" cy="12" r="4" />
+                            <path
+                                d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7" />
+                        </svg>
+                    </a>
+                    <div class="nav-item dropdown d-none d-md-flex me-3">
+                        <a href="#" class="nav-link px-0" data-bs-toggle="dropdown" tabindex="-1"
+                            aria-label="Show notifications">
+                            <!-- Download SVG icon from http://tabler-icons.io/i/bell -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                                viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path
+                                    d="M10 5a2 2 0 0 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6" />
+                                <path d="M9 17v1a3 3 0 0 0 6 0v-1" />
+                            </svg>
+                            <span class="badge bg-red"></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end dropdown-menu-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus ad amet
+                                    consectetur exercitationem fugiat in ipsa ipsum, natus odio quidem quod repudiandae
+                                    sapiente. Amet debitis et magni maxime necessitatibus ullam.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown"
+                            aria-label="Open user menu">
+                            <span class="avatar avatar-sm"
+                                style="background-image: url(./static/avatars/000m.jpg)"></span>
+                            <div class="d-none d-xl-block ps-2">
+                                <div>Paweł Kuna</div>
+                                <div class="mt-1 small text-muted">UI Designer</div>
+                            </div>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                            <a href="#" class="dropdown-item">Set status</a>
+                            <a href="#" class="dropdown-item">Profile & account</a>
+                            <a href="#" class="dropdown-item">Feedback</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item">Settings</a>
+                            <a href="#" class="dropdown-item">Logout</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-menu">
+                    <ul class="navbar-nav pt-lg-3">
+                        <li class="nav-item">
+                            <a class="nav-link" href="./index.html">
+                                <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                    <!-- Download SVG icon from http://tabler-icons.io/i/home -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24"
+                                        height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                        fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <polyline points="5 12 3 12 12 3 21 12 19 12" />
+                                        <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+                                        <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+                                    </svg>
+                                </span>
+                                <span class="nav-link-title">
+                                    Home
+                                </span>
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown"
+                                data-bs-auto-close="false" role="button" aria-expanded="false">
+                                <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                    <!-- Download SVG icon from http://tabler-icons.io/i/package -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24"
+                                        height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                        fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <polyline points="12 3 20 7.5 20 16.5 12 21 4 16.5 4 7.5 12 3" />
+                                        <line x1="12" y1="12" x2="20" y2="7.5" />
+                                        <line x1="12" y1="12" x2="12" y2="21" />
+                                        <line x1="12" y1="12" x2="4" y2="7.5" />
+                                        <line x1="16" y1="5.25" x2="8" y2="9.75" />
+                                    </svg>
+                                </span>
+                                <span class="nav-link-title">
+                                    Interface
+                                </span>
+                            </a>
+                            <div class="dropdown-menu">
+                                <div class="dropdown-menu-columns">
+                                    <div class="dropdown-menu-column">
+                                        <a class="dropdown-item" href="./empty.html">
+                                            Empty page
+                                        </a>
+                                        <a class="dropdown-item" href="./accordion.html">
+                                            Accordion
+                                        </a>
+                                        <a class="dropdown-item" href="./blank.html">
+                                            Blank page
+                                        </a>
+                                        <a class="dropdown-item" href="./buttons.html">
+                                            Buttons
+                                        </a>
+                                        <a class="dropdown-item" href="./cards.html">
+                                            Cards
+                                        </a>
+                                        <a class="dropdown-item" href="./cards-masonry.html">
+                                            Cards Masonry
+                                        </a>
+                                        <a class="dropdown-item" href="./colors.html">
+                                            Colors
+                                        </a>
+                                        <a class="dropdown-item" href="./dropdowns.html">
+                                            Dropdowns
+                                        </a>
+                                        <a class="dropdown-item" href="./icons.html">
+                                            Icons
+                                        </a>
+                                        <a class="dropdown-item" href="./modals.html">
+                                            Modals
+                                        </a>
+                                        <a class="dropdown-item" href="./maps.html">
+                                            Maps
+                                        </a>
+                                        <a class="dropdown-item" href="./map-fullsize.html">
+                                            Map fullsize
+                                        </a>
+                                        <a class="dropdown-item" href="./maps-vector.html">
+                                            Vector maps
+                                        </a>
+                                    </div>
+                                    <div class="dropdown-menu-column">
+                                        <a class="dropdown-item" href="./navigation.html">
+                                            Navigation
+                                        </a>
+                                        <a class="dropdown-item" href="./charts.html">
+                                            Charts
+                                        </a>
+                                        <a class="dropdown-item" href="./pagination.html">
+                                            Pagination
+                                        </a>
+                                        <a class="dropdown-item" href="./placeholder.html">
+                                            Placeholder
+                                        </a>
+                                        <a class="dropdown-item" href="./tabs.html">
+                                            Tabs
+                                        </a>
+                                        <a class="dropdown-item" href="./tables.html">
+                                            Tables
+                                        </a>
+                                        <a class="dropdown-item" href="./carousel.html">
+                                            Carousel
+                                        </a>
+                                        <a class="dropdown-item" href="./lists.html">
+                                            Lists
+                                        </a>
+                                        <a class="dropdown-item" href="./typography.html">
+                                            Typography
+                                        </a>
+                                        <a class="dropdown-item" href="./offcanvas.html">
+                                            Offcanvas
+                                        </a>
+                                        <a class="dropdown-item" href="./markdown.html">
+                                            Markdown
+                                        </a>
+                                        <div class="dropend">
+                                            <a class="dropdown-item dropdown-toggle" href="#sidebar-authentication"
+                                                data-bs-toggle="dropdown" data-bs-auto-close="false" role="button"
+                                                aria-expanded="false">
+                                                Authentication
+                                            </a>
+                                            <div class="dropdown-menu">
+                                                <a href="./sign-in.html" class="dropdown-item">Sign in</a>
+                                                <a href="./sign-up.html" class="dropdown-item">Sign up</a>
+                                                <a href="./forgot-password.html" class="dropdown-item">Forgot
+                                                    password</a>
+                                                <a href="./terms-of-service.html" class="dropdown-item">Terms of
+                                                    service</a>
+                                                <a href="./auth-lock.html" class="dropdown-item">Lock screen</a>
+                                            </div>
+                                        </div>
+                                        <div class="dropend">
+                                            <a class="dropdown-item dropdown-toggle" href="#sidebar-error"
+                                                data-bs-toggle="dropdown" data-bs-auto-close="false" role="button"
+                                                aria-expanded="false">
+                                                Error pages
+                                            </a>
+                                            <div class="dropdown-menu">
+                                                <a href="./error-404.html" class="dropdown-item">404 page</a>
+                                                <a href="./error-500.html" class="dropdown-item">500 page</a>
+                                                <a href="./error-maintenance.html" class="dropdown-item">Maintenance
+                                                    page</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </nav>
-                    </div>
+                            </div>
+                        </li>
+
+
+
+
+                    </ul>
                 </div>
-            </main>
-            <script src="https://cdn.tailwindcss.com"></script>
-            <script src="{{ asset('js/app.js') }}"></script>
-        </div>
-    </body>
+            </div>
+        </aside>
+        <header class="navbar navbar-expand-md navbar-light d-none d-lg-flex d-print-none">
+            <div class="container-xl">
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="navbar-nav flex-row order-md-last">
+                <a href="?theme=dark" class="nav-link px-0 hide-theme-dark" title="Enable dark mode" data-bs-toggle="tooltip" data-bs-placement="bottom">
+                  <!-- Download SVG icon from http://tabler-icons.io/i/moon -->
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" /></svg>
+                </a>
+                <a href="?theme=light" class="nav-link px-0 hide-theme-light" title="Enable light mode" data-bs-toggle="tooltip" data-bs-placement="bottom">
+                  <!-- Download SVG icon from http://tabler-icons.io/i/sun -->
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="12" r="4" /><path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7" /></svg>
+                </a>
+                <div class="nav-item dropdown d-none d-md-flex me-3">
+                  <a href="#" class="nav-link px-0" data-bs-toggle="dropdown" tabindex="-1" aria-label="Show notifications">
+                    <!-- Download SVG icon from http://tabler-icons.io/i/bell -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 5a2 2 0 0 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6" /><path d="M9 17v1a3 3 0 0 0 6 0v-1" /></svg>
+                    <span class="badge bg-red"></span>
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-end dropdown-menu-card">
+                    <div class="card">
+                      <div class="card-body">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus ad amet consectetur exercitationem fugiat in ipsa ipsum, natus odio quidem quod repudiandae sapiente. Amet debitis et magni maxime necessitatibus ullam.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="nav-item dropdown">
+                  <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
+                    <span class="avatar avatar-sm" style="background-image: url(./static/avatars/000m.jpg)"></span>
+                    <div class="d-none d-xl-block ps-2">
+                      <div>Paweł Kuna</div>
+                      <div class="mt-1 small text-muted">UI Designer</div>
+                    </div>
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <a href="#" class="dropdown-item">Set status</a>
+                    <a href="#" class="dropdown-item">Profile & account</a>
+                    <a href="#" class="dropdown-item">Feedback</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item">Settings</a>
+                    <a href="#" class="dropdown-item">Logout</a>
+                  </div>
+                </div>
+              </div>
+              <div class="collapse navbar-collapse" id="navbar-menu">
+                <div>
+                  <form action="." method="get">
+                    <div class="input-icon">
+                      <span class="input-icon-addon">
+                        <!-- Download SVG icon from http://tabler-icons.io/i/search -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="10" cy="10" r="7" /><line x1="21" y1="21" x2="15" y2="15" /></svg>
+                      </span>
+                      <input type="text" class="form-control" placeholder="Search…" aria-label="Search in website">
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </header>
+          <div class="page-wrapper">
+            <div class="container-xl">
+              <!-- Page title -->
+              <div class="page-header d-print-none">
+                <div class="row align-items-center">
+                  <div class="col">
+                    <!-- Page pre-title -->
+                    <div class="page-pretitle">
+                      Overview
+                    </div>
+                    <h2 class="page-title">
+                      Combo layout
+                    </h2>
+                  </div>
+                  <!-- Page title actions -->
+                  {{-- <div class="col-auto ms-auto d-print-none">
+                    <div class="btn-list">
+                      <span class="d-none d-sm-inline">
+                        <a href="#" class="btn btn-white">
+                          New view
+                        </a>
+                      </span>
+                      <a href="#" class="btn btn-primary d-none d-sm-inline-block" data-bs-toggle="modal" data-bs-target="#modal-report">
+                        <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
+                        Create new report
+                      </a>
+                      <a href="#" class="btn btn-primary d-sm-none btn-icon" data-bs-toggle="modal" data-bs-target="#modal-report" aria-label="Create new report">
+                        <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
+                      </a>
+                    </div>
+                  </div> --}}
+                </div>
+              </div>
+            </div>
+
+            <footer class="footer footer-transparent d-print-none">
+              <div class="container-xl">
+                <div class="row text-center align-items-center flex-row-reverse">
+                  <div class="col-lg-auto ms-lg-auto">
+                    <ul class="list-inline list-inline-dots mb-0">
+                      <li class="list-inline-item"><a href="./docs/index.html" class="link-secondary">Documentation</a></li>
+                      <li class="list-inline-item"><a href="./license.html" class="link-secondary">License</a></li>
+                      <li class="list-inline-item"><a href="https://github.com/tabler/tabler" target="_blank" class="link-secondary" rel="noopener">Source code</a></li>
+                      <li class="list-inline-item">
+                        <a href="https://github.com/sponsors/codecalm" target="_blank" class="link-secondary" rel="noopener">
+                          <!-- Download SVG icon from http://tabler-icons.io/i/heart -->
+                          <svg xmlns="http://www.w3.org/2000/svg" class="icon text-pink icon-filled icon-inline" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" /></svg>
+                          Sponsor
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col-12 col-lg-auto mt-3 mt-lg-0">
+                    <ul class="list-inline list-inline-dots mb-0">
+                      <li class="list-inline-item">
+                        Copyright &copy; 2022
+                        <a href="." class="link-secondary">Tabler</a>.
+                        All rights reserved.
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="./changelog.html" class="link-secondary" rel="noopener">
+                          v1.0.0-beta6
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </footer>
+          </div>
+    </div>
+    @include('admin.scripts')
+</body>
+
 </html>
