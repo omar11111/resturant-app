@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+{{-- hihi --}}
 @section('content')
- index
+    <h1>menu</h1>
 @endsection
