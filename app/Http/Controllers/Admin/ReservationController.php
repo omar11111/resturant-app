@@ -14,7 +14,7 @@ class ReservationController extends Controller
      */
     public function index()
     {
-        
+
         $reservations= Reservation::all();
         return view('admin.reservations.index',compact(['reservations'=>$reservations]));
 
@@ -27,7 +27,7 @@ class ReservationController extends Controller
      */
     public function create()
     {
-        //
+       
     }
 
     /**
