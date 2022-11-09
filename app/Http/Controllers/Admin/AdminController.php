@@ -10,6 +10,6 @@ class AdminController extends Controller
     public function index()
     {
         // dd('d');
-        return view('admin.index');
+        return view('admin.categories.index');
     }
 }
