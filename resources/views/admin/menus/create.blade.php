@@ -78,7 +78,7 @@
               py-2.5
               bg-blue-600
               text-white
-
+                
               text-xs
               leading-tight
               uppercase
@@ -89,7 +89,7 @@
               active:bg-blue-800 active:shadow-lg
               transition
               duration-150
-              ease-in-out font-semibold">@lang('Create Category')</button>
+              ease-in-out font-semibold">@lang('Create Menu')</button>
             </form>
         </div>
 

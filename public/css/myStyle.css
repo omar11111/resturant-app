@@ -1,0 +1,16 @@
+@font-face {
+    font-family: "cairo";
+    src: url('../fonts/cairo.ttf' );
+    }
+body{
+    font-family: "cairo" !important;
+    /* height:500px; */
+    overflow-x :hidden;
+  }
+  a{
+    font-family: "cairo" !important;
+  }
+
+  html{
+    font-family: "cairo" !important;
+  }

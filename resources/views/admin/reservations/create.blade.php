@@ -89,7 +89,7 @@
               active:bg-blue-800 active:shadow-lg
               transition
               duration-150
-              ease-in-out font-semibold">@lang('Create Category')</button>
+              ease-in-out font-semibold">@lang('Create Reservation')</button>
             </form>
         </div>
 

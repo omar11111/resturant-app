@@ -1,4 +1,18 @@
 {
     "Name":"الإسم",
-    "":""
+    "Categories":"فئات",
+    "Menus":"قوائم الطعام",
+    "Tables":"الطاولات",
+    "Reservations":"الحجوزات",
+    "Dashboard":"لوحة التحكم",
+    "Message":"رسالتك",
+    "Create Category":"إنشاء فئة",
+    "Create Menu":"إنشاء قائمة طعام جديدة",
+    "Create Reservation":"إنشاء حجز",
+    "Create Table":"إنشاء طاولة",
+    "New Table":"طاولة جديدة",
+    "New Category":"فئة جديدة",
+    "New Menu":"قائمة طعام جديدة",
+    "New Reservation":"حجز جديد"
+
 }
