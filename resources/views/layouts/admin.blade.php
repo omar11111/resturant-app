@@ -21,7 +21,7 @@
 
     <div class="flex-col w-full md:flex md:flex-row md:min-h-screen">
        @include('admin.sidebar')
-        <main class="m-2 w-full">
+        <main class=" w-full">
 
          @include('admin.admin-navbar')
 

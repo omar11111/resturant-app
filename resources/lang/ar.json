@@ -1,5 +1,7 @@
 {
     "Name":"الإسم",
+    "Name Ar":"الإسم بالعربية",
+    "Name En":"الاسم بالانجليزية",
     "Categories":"فئات",
     "Menus":"قوائم الطعام",
     "Tables":"الطاولات",
@@ -14,6 +16,9 @@
     "New Category":"فئة جديدة",
     "New Menu":"قائمة طعام جديدة",
     "New Reservation":"حجز جديد",
-    "Language":"اللغة"
+    "Language":"اللغة",
+    "Description":"الوصف",
+    "Description Ar":"الوصف بالعربية",
+    "Description En":"الوصف بالانجليزية"
 
 }
