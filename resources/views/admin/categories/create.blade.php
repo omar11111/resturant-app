@@ -7,7 +7,7 @@
 
     <div class="py-12">
         <div class="block  p-6 rounded-lg shadow-lg bg-slate-50 max-w-3xl mx-auto">
-            <form>
+            <form action="{{ route('admin.categories.store') }}">
                 <div class="form-group mb-6">
                     <input type="text"
                         class="form-control block
@@ -24,7 +24,7 @@
                 ease-in-out
                 m-0
                 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                        id="exampleInput7" placeholder="@lang('Name')">
+                        id="exampleInput7" placeholder="@lang('Name_Ar')">
                 </div>
                 <div class="form-group mb-6 ">
 
