@@ -15,6 +15,10 @@
     <!-- Scripts -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/myStyle.css') }}">
+    @if (app()->getLocale() == 'ar')
+    <link rel="stylesheet" href="{{ asset('css/rtlStyle.css') }}">
+    @endif
+
 </head>
 
 <body class="font-sans gray">

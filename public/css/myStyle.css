@@ -14,3 +14,11 @@ body{
   html{
     font-family: "cairo" !important;
   }
+
+
+
+  button.flex{
+    background: darkblue;
+    color: white;
+    transition: 0.7s all;
+  }
