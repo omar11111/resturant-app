@@ -8,72 +8,63 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="flex justify-end m-2 p-2 ">
-                <a href="{{ route('admin.categories.create') }}" class="py-2 px-3 text-white  bg-indigo-500 hover:bg-indigo-700 rounded-lg font-semibold">@lang('New Category')</a>
+                <a href="{{ route('admin.categories.create') }}"
+                    class="py-2 px-3 text-white  bg-indigo-500 hover:bg-indigo-700 rounded-lg font-semibold">@lang('New Category')</a>
+
+            </div>
+
+            <div class="flex justify-start">
+                @if (session('success'))
+                <div class="bg-indigo-900 text-center py-4 lg:px-4">
+                    <div class="p-2 bg-indigo-800 items-center text-indigo-100 leading-none lg:rounded-full flex lg:inline-flex"
+                        role="alert">
+                        <span class="flex rounded-full bg-indigo-500 uppercase px-2 py-1 text-xs font-bold mr-3">@lang('success')</span>
+                        <span class="font-semibold  mr-2 text-white flex-auto">{{ session('success') }}</span>
+                        <svg class="fill-current opacity-75 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                            <path d="M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z" />
+                        </svg>
+                    </div>
+                </div>
+            @endif
             </div>
             <div class="overflow-x-auto relative">
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
                             <th scope="col" class="py-3 px-6">
-                                Product name
+                                @lang('Name')
                             </th>
                             <th scope="col" class="py-3 px-6">
-                                Color
+                                @lang('Description')
                             </th>
                             <th scope="col" class="py-3 px-6">
-                                Category
+                                @lang('Image')
                             </th>
                             <th scope="col" class="py-3 px-6">
-                                Price
+                                @lang('Actions')
                             </th>
+
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                            <th scope="row"
-                                class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                Apple MacBook Pro 17"
-                            </th>
-                            <td class="py-4 px-6">
-                                Sliver
-                            </td>
-                            <td class="py-4 px-6">
-                                Laptop
-                            </td>
-                            <td class="py-4 px-6">
-                                $2999
-                            </td>
-                        </tr>
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                            <th scope="row"
-                                class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                Microsoft Surface Pro
-                            </th>
-                            <td class="py-4 px-6">
-                                White
-                            </td>
-                            <td class="py-4 px-6">
-                                Laptop PC
-                            </td>
-                            <td class="py-4 px-6">
-                                $1999
-                            </td>
-                        </tr>
-                        <tr class="bg-white dark:bg-gray-800">
-                            <th scope="row"
-                                class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                Magic Mouse 2
-                            </th>
-                            <td class="py-4 px-6">
-                                Black
-                            </td>
-                            <td class="py-4 px-6">
-                                Accessories
-                            </td>
-                            <td class="py-4 px-6">
-                                $99
-                            </td>
-                        </tr>
+                        {{-- @dd($categories) --}}
+                        @foreach ($categories as $category)
+                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                <th scope="row"
+                                    class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    {{ $category->name }}
+                                </th>
+                                <td class="py-4 px-6">
+                                    {{ $category->description }}
+                                </td>
+                                <td class="py-4 px-6">
+                                    {{ $category->image }}
+                                </td>
+
+                            </tr>
+                        @endforeach
+
+
                     </tbody>
                 </table>
             </div>

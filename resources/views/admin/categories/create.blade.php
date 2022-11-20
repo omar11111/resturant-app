@@ -9,6 +9,7 @@
                 {{ __('Create Category') }}
             </h2>
             <form action="{{ route('admin.categories.store') }}" method="POST">
+                @csrf
                 <div class="form-group mb-6">
                     <input type="text"
                         class="form-control block
@@ -25,7 +26,7 @@
                 ease-in-out
                 m-0
                 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                        id="exampleInput7" placeholder="@lang('Name_Ar')">
+                      name="name_ar"  id="exampleInput7" placeholder="@lang('Name Ar')">
                 </div>
 
                 <div class="form-group mb-6">
@@ -44,7 +45,7 @@
                 ease-in-out
                 m-0
                 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                        id="exampleInput7" placeholder="@lang('Name En')">
+                      name="name_en"  id="exampleInput7" placeholder="@lang('Name En')">
                 </div>
                 <div class="form-group mb-6">
 
@@ -66,7 +67,7 @@
                         dark:placeholder-gray-400
                         m-0
                         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                        id="file_input" type="file">
+                        id="file_input" type="file" name="image">
 
                 </div>
 
@@ -89,7 +90,7 @@
                 m-0
                 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
               "
-                        id="exampleFormControlTextarea13" rows="3" placeholder="@lang('Description Ar')"></textarea>
+                        id="exampleFormControlTextarea13" rows="3" name="description_ar" placeholder="@lang('Description Ar')"></textarea>
                 </div>
                 <div class="form-group mb-6">
                     <textarea
@@ -110,7 +111,7 @@
                 m-0
                 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
               "
-                        id="exampleFormControlTextarea13" rows="3" placeholder="@lang('Description En')"></textarea>
+                        id="exampleFormControlTextarea13" rows="3" name="description_en" placeholder="@lang('Description En')"></textarea>
                 </div>
 
 

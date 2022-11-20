@@ -17,6 +17,7 @@ class CreateCategoriesTable extends Migration
             $table->id();
             $table->json('name');
             $table->json('description');
+            // $table->foreignId('food_id')->constrained();
             $table->string('image');
             $table->timestamps();
         });

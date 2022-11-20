@@ -19,6 +19,8 @@
     "Language":"اللغة",
     "Description":"الوصف",
     "Description Ar":"الوصف بالعربية",
-    "Description En":"الوصف بالانجليزية"
+    "Description En":"الوصف بالانجليزية",
+    "Category Created Successfully":"تم إنشاء الفئة بنجاح",
+    "Actions":"أجراءات اخرى"
 
 }
