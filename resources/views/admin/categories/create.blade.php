@@ -1,13 +1,14 @@
 <x-admin-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+
+
+
 
     <div class="py-12">
         <div class="block  p-6 rounded-lg shadow-lg bg-slate-50 max-w-3xl mx-auto">
-            <form action="{{ route('admin.categories.store') }}">
+            <h2 class="font-semibold py-2 text-xl text-gray-800 ">
+                {{ __('Create Category') }}
+            </h2>
+            <form action="{{ route('admin.categories.store') }}" method="POST">
                 <div class="form-group mb-6">
                     <input type="text"
                         class="form-control block
@@ -26,7 +27,26 @@
                 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                         id="exampleInput7" placeholder="@lang('Name_Ar')">
                 </div>
-                <div class="form-group mb-6 ">
+
+                <div class="form-group mb-6">
+                    <input type="text"
+                        class="form-control block
+                w-full
+                px-3
+                py-1.5
+                text-base
+                font-normal
+                text-gray-700
+                bg-white bg-clip-padding
+                border border-solid border-gray-300
+                rounded
+                transition
+                ease-in-out
+                m-0
+                focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                        id="exampleInput7" placeholder="@lang('Name En')">
+                </div>
+                <div class="form-group mb-6">
 
 
                     <input
@@ -49,6 +69,7 @@
                         id="file_input" type="file">
 
                 </div>
+
                 <div class="form-group mb-6">
                     <textarea
                         class="
@@ -68,8 +89,31 @@
                 m-0
                 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
               "
-                        id="exampleFormControlTextarea13" rows="3" placeholder="@lang('Message')"></textarea>
+                        id="exampleFormControlTextarea13" rows="3" placeholder="@lang('Description Ar')"></textarea>
                 </div>
+                <div class="form-group mb-6">
+                    <textarea
+                        class="
+                form-control
+                block
+                w-full
+                px-3
+                py-1.5
+                text-base
+                font-normal
+                text-gray-700
+                bg-white bg-clip-padding
+                border border-solid border-gray-300
+                rounded
+                transition
+                ease-in-out
+                m-0
+                focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+              "
+                        id="exampleFormControlTextarea13" rows="3" placeholder="@lang('Description En')"></textarea>
+                </div>
+
+
 
                 <button type="submit"
                     class="
