@@ -22,6 +22,7 @@
     "Description En":"الوصف بالانجليزية",
     "Category Created Successfully":"تم إنشاء الفئة بنجاح",
     "Actions":"أجراءات اخرى",
-    "Log Out":"تسجيل الخروج"
+    "Log Out":"تسجيل الخروج",
+    "The :attribute field is required.": "حقل ال:attribute مطلوب"
 
 }

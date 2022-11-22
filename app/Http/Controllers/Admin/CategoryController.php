@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CategoryStoreRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -37,15 +38,9 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryStoreRequest $request)
     {
-        $request->validate([
-            'name_ar'=>'required',
-            'name_en'=>'required',
-            'description_ar'=>'required',
-            'description_en'=>'required',
-            'image' => 'required|image|mimes:png,jpg,jpeg|max:2048'
-        ]);
+        $request->validate();
         $imageName = time().'.'.$request->image->extension();
 
         // Public Folder

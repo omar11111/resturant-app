@@ -22,3 +22,9 @@ body{
     color: white;
     transition: 0.7s all;
   }
+
+  .the-validation-message{
+    color: white;
+    background: rgb(221, 117, 117);
+    margin-bottom: 8px;
+  }
