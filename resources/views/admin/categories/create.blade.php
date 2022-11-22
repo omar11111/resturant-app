@@ -26,48 +26,26 @@
                 ease-in-out
                 m-0
                 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                      name="name_ar"  id="exampleInput7" placeholder="@lang('Name Ar')">
+                        name="name_ar" id="exampleInput7" placeholder="@lang('Name Ar')">
                 </div>
+                @if ($errors->any())
+                    @foreach ($errors->all() as $error )
+                        <h5>{{ $error }}</h5>
+                    @endforeach
+                @endif
 
                 <div class="form-group mb-6">
-                    <input type="text"
-                        class="form-control block
-                w-full
-                px-3
-                py-1.5
-                text-base
-                font-normal
-                text-gray-700
-                bg-white bg-clip-padding
-                border border-solid border-gray-300
-                rounded
-                transition
-                ease-in-out
-                m-0
+                    <input type="text" class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0
                 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                      name="name_en"  id="exampleInput7" placeholder="@lang('Name En')">
+                        name="name_en" id="exampleInput7" placeholder="@lang('Name En')">
                 </div>
                 <div class="form-group mb-6">
 
 
                     <input
-                        class="form-control block
-                        w-full
-                        px-3
-                        py-1.5
-                        text-base
-
-                        font-normal
-                        text-gray-700
-                        bg-white bg-clip-padding
-                        border border-solid border-gray-300
-                        rounded
-                        transition
-                        ease-in-out
-                        dark:placeholder-gray-400
-                        m-0
-                        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                        id="file_input" type="file" name="image">
+                        class="form-control block w-full
+                        px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded  transition   ease-in-out dark:placeholder-gray-400 m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                        type="file" name="image">
 
                 </div>
 

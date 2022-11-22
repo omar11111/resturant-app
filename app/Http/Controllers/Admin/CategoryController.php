@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
@@ -38,12 +39,25 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name_ar'=>'required',
+            'name_en'=>'required',
+            'description_ar'=>'required',
+            'description_en'=>'required',
+            'image' => 'required|image|mimes:png,jpg,jpeg|max:2048'
+        ]);
+        $imageName = time().'.'.$request->image->extension();
+
+        // Public Folder
+        $request->image->move(public_path('images'), $imageName);
+        dd($imageName);
         $categories = Category::create([
             'name' => [
                 'ar'=>$request->name_ar,'en'=> $request->name_en],
             'description'=>['ar'=>$request->description_ar,'en'=>$request->description_en],
             'image'=>$request->image
         ]);
+        // Storage::disk('local')->put($request->image, 'Contents');
 
         return redirect()->route('admin.categories.index')->with('success',__('Category Created Successfully'));
 

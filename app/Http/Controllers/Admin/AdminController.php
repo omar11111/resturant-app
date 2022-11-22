@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
     public function index()
     {
-        // dd('d');
-        return view('admin.categories.index');
+        $categories = Category::all();
+        return view('admin.categories.index',compact('categories'));
     }
 }

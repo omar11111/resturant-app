@@ -17,7 +17,7 @@ body{
 
 
 
-  button.flex{
+  .language-button{
     background: darkblue;
     color: white;
     transition: 0.7s all;
